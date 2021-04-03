@@ -15,7 +15,7 @@ npm install
 
 - Al crear una nueva app, Spotify otorga un **Client ID** y un **Client Secret** para generar un **access token**, los cuales podemos utilizar con PostMan para obtenerlo de forma sencilla.
 
-  ![postman](documentation\postman.png)
+  ![postman](postman.png)
 
 
 ## Configurando servicio ⌨️ 
@@ -36,4 +36,4 @@ getQuery( query:string ){
 ## Importante &#10071;
 El access token caduca cada hora, por lo que se sugiere implementar el backend.
 
-![screenshot](documentation\screenshot.png)
+![screenshot](screenshot.png)
