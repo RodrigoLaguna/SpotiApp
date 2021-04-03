@@ -1,0 +1,13 @@
+<app-loading *ngIf="loading"></app-loading>
+
+<div *ngIf="error" class="alert alert-danger animated fadeIn">
+  <h3>Error</h3>
+  <p>{{ messageError }} </p>
+</div>
+
+<div class="row">
+  <div class="col text-center">
+    <h2>Top 20 nuevos lanzamientos</h2>
+  </div>
+</div>
+<app-tarjetas [items]="nuevasCanciones"></app-tarjetas>

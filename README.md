@@ -1,27 +1,39 @@
 # Spotiapp
+Aplicación en angular que consume la API de Spotify.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.6.
+## Comenzando 🚀
 
-## Development server
+Una vez clonado el proyecto nos movemos al interior de la carpeta del proyecto para descargar las dependencias necesarias.
+```
+npm install
+```
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Pre-requisitos 📋
+- Debes crear una cuenta en Spotify Developer ( https://developer.spotify.com/dashboard/login )
+- Crear una nueva app en el apartado de Dashboard.
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- Al crear una nueva app, Spotify otorga un **Client ID** y un **Client Secret** para generar un **access token**, los cuales podemos utilizar con PostMan para obtenerlo de forma sencilla.
 
-## Build
+  ![postman](documentation\postman.png)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
 
-## Running unit tests
+## Configurando servicio ⌨️ 
+Una vez obtenido el **access token** lo copiamos y pegamos en **app/services/spotify.service.ts**
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```javascript
+getQuery( query:string ){
+    const url = `https://api.spotify.com/v1/${ query }`;
 
-## Running end-to-end tests
+    const headers = new HttpHeaders({
+      'Authorization': 'Bearer BQAIIpFhFEgI00gWaJa8SnhzVtNL-EPnPg-l9SJ1im_f1GFpL44HlKbD7E051QqoiLrX1HC9pY-pEyBVxF8',
+    });
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+    return this.http.get( url , {headers} );
+  }
+```
 
-## Further help
+## Importante &#10071;
+El access token caduca cada hora, por lo que se sugiere implementar el backend.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+![screenshot](documentation\screenshot.png)

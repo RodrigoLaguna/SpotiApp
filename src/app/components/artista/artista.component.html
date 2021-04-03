@@ -1,0 +1,70 @@
+<app-loading *ngIf="loading"></app-loading>
+
+<div class="row animated fadeIn align-items-center" *ngIf="!loading">
+  <div class="col-4 col-lg-2">
+    <img [src]="artist.images | noimage " data-toggle="modal" data-target="#exampleModal" class="puntero img-responsive img-thumbnail img-circle">
+  </div>
+
+  <div class="col">
+    <h3>{{ artist.name }} </h3>
+    <p>
+      <a [href]="artist.external_urls.spotify" class="text-decoration-none" target="_blank">
+        Ir a la pagína del artista
+      </a>
+    </p>
+  </div>
+
+  <div class="col-12 col-md-auto text-right my-3">
+    <button routerLink="/search" class="btn btn-outline-danger  btn-lg ">
+      Regresar
+    </button>
+  </div>
+
+</div>
+
+<div class="row m-md-5">
+      <div class="col-12">
+
+        <table class="table table-responsive-lg text-white table-hover">
+          <thead>
+            <tr>
+              <th>Foto</th>
+              <th>Album</th>
+              <th>Canción</th>
+              <th>Vista previa</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let track of topTracks">
+              <td class="align-middle"><img [src]="track.album.images | noimage" class="img-thumb"></td>
+              <td class="align-middle">{{ track.album.name }}</td>
+              <td class="align-middle font-weight-bold">{{ track.name }} </td>
+              <td>
+                <!-- <audio *ngIf="track.preview_url" [src]="track.preview_url" controls></audio> -->
+                <iframe class="animated fadeIn" [src]="track.id | domseguro " width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+</div>
+
+
+ <!-- Modal -->
+ <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content bg-dark">
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col">
+              <img [src]="artist.images | noimage " class="card-img" alt="...">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  
